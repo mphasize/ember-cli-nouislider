@@ -12,7 +12,10 @@ export default Ember.Component.extend({
   behaviour:    "tap",
   animate:      true,
 
-  pips:         true,
+  pips:         false,
+  pipsOptions: {
+    mode: 'range'
+  },
 
   min: 0,
   max: 100,
@@ -38,10 +41,7 @@ export default Ember.Component.extend({
     });
 
     if(this.get('pips')) {
-      this.$().noUiSlider_pips({
-        mode: 'range',
-        density: 3
-      });
+      this.$().noUiSlider_pips(this.get('pipsOptions'));
     }
 
     var _this = this;

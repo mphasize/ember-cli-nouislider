@@ -19,7 +19,8 @@ var app = new EmberAddon();
 // along with the exports of each module as its value.
 
 app.import("bower_components/nouislider/distribute/jquery.nouislider.all.js");
-app.import("bower_components/nouislider/distribute/jquery.nouislider.min.css");
+app.import("bower_components/nouislider/src/jquery.nouislider.css");
+app.import("bower_components/nouislider/src/jquery.nouislider.pips.css");
 
 app.import("vendor/prism.js");
 app.import("vendor/prism.css");

@@ -12,13 +12,15 @@ export default Ember.Component.extend({
   behaviour:    "tap",
   animate:      true,
 
+  pips:         true,
+
   min: 0,
   max: 100,
   range: function() {
     return {
       min: this.get('min'),
       max: this.get('max')
-    }
+    };
   }.property("min", "max"),
 
   didInsertElement: function() {
@@ -34,6 +36,13 @@ export default Ember.Component.extend({
       behaviour:   this.get('behaviour'),
       animate:     this.get('animate')
     });
+
+    if(this.get('pips')) {
+      this.$().noUiSlider_pips({
+        mode: 'range',
+        density: 3
+      });
+    }
 
     var _this = this;
     this.$().on("change", function() {

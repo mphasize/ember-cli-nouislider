@@ -17,6 +17,8 @@ export default Ember.Component.extend({
     mode: 'range'
   },
 
+  disabled: false,
+
   min: 0,
   max: 100,
   range: function() {
@@ -44,11 +46,23 @@ export default Ember.Component.extend({
       this.$().noUiSlider_pips(this.get('pipsOptions'));
     }
 
+    if(this.get('disabled')) {
+      this.$().attr('disabled', 'disabled');
+    }
+
     var _this = this;
     this.$().on("change", function() {
       _this.sendAction("change", _this.slider.val());
     });
   },
+
+  disabledChanged: function() {
+    if(this.get('disabled')) {
+      this.$().attr('disabled', 'disabled');
+    } else {
+      this.$().removeAttr('disabled');
+    }
+  }.observes('disabled'),
 
   willDestroyElement: function() {
     this.slider[0].destroy();
